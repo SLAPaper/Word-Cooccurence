@@ -1,6 +1,6 @@
 # Word Co-occurence
 
-Tools to find word co-occurence in text.
+Tools to find word co-occurence in given sentences.
 
 The input file is defining like this:
 
