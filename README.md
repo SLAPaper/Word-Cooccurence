@@ -8,6 +8,10 @@ Tools to find word co-occurence in given sentences.
 
 The input text file is defining like this:
 
-a tab seperated file(TSV)
+a tab seperated file(TSV):
 
 ```ID \t sentence```
+
+### Keyword input
+
+The keyword input can should be a json file with nested objects(dictionaries).
