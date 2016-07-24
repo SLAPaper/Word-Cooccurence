@@ -12,7 +12,7 @@ a tab seperated file(TSV):
 
 `ID \t sentence`
 
-### Keyword input
+### Keyword(entity) input
 
 The keyword input can should be a json file with objects(dictionaries).
 
@@ -25,3 +25,5 @@ The keyword input can should be a json file with objects(dictionaries).
 }
 
 ```
+
+### ID-Entity Output
