@@ -27,3 +27,13 @@ The keyword input can should be a json file with objects(dictionaries).
 ```
 
 ### ID-Entity Output
+
+a tab seperated file(TSV):
+
+`ID \t keyword \t key_form`
+
+### ID-Sentence-Entities Output
+
+a tab seperated file(TSV):
+
+`ID \t sentence \t keyword1, keyword2, keyword3`
