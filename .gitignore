@@ -90,4 +90,5 @@ ENV/
 
 # User defined settings
 *.txt
+*.tsv
 *.json
