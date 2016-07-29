@@ -30,10 +30,11 @@ The keyword input can should be a json file with objects(dictionaries).
         ]
     },
     "keyword2": {
-        "abbreviation": [
-        ],
         "full_name": [
             "key2_form1",
+        ],
+        "regular_expression":[
+            "key2_re1"
         ]
     }
 }
