@@ -10,7 +10,9 @@ import csv
 import pdb
 
 def word_count(args: tg.Tuple[str, tg.Dict]) -> tg.List:
-    print(args)
+    if DEBUG:
+        print(args)
+
     textin = args[0]
     key = args[1]
 
@@ -24,15 +26,11 @@ DEBUG = True
 if __name__ == "__main__":
     if DEBUG:
         textin = "TEST.tsv"
-        keys = {
-            "key1": ["key1form1", "keyform2"], 
-            "key2": ["key2form1",],
-            "key3": None
-            }
+        with open("TEST.json", 'r', encoding='utf_8') as keyin:
+            keys = json.load(keyin)
     else:
         if len(sys.argv) < 3:
-            print("Not enough parameters", file=sys.stderr)
-            sys.exit(1)
+            sys.exit("Not enough parameters")
         else:
             textin = sys.argv[1]
             with open(sys.argv[2], 'r', encoding='utf_8') as keyin:
