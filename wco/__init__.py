@@ -56,5 +56,5 @@ if __name__ == "__main__":
                 keys = json.load(keyin)
 
     with Pool(8) as p:
-        result = p.map(word_count, ((textin, item) for item in keys.items()))
+        result = p.imap(word_count, ((textin, item) for item in keys.items()), 10)
         print([item for item in result])
