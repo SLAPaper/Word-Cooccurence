@@ -11,6 +11,10 @@ import pdb
 import re
 
 def word_count(args: tg.Tuple[str, tg.Dict[str, tg.List]) -> tg.List:
+    """function that count the number of defined keys in given text
+    
+    using tuple to store args due to Pool's map method only support one parameter
+    """
     if DEBUG:
         print(args)
 
