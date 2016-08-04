@@ -11,7 +11,7 @@ import pdb
 import re
 from collections import defaultdict
 
-def word_count(args: tg.Tuple[tg.List[str], tg.Dict[str, tg.List]]) -> tg.List:
+def word_count(args: tg.Tuple[tg.List[str], tg.Dict[str, tg.List]]) -> tg.Tuple[str, tg.Dict[str, str]]:
     """function that count the number of defined keys in given text
     using tuple to store args due to Pool's map method only support one parameter
     """
@@ -30,18 +30,20 @@ def word_count(args: tg.Tuple[tg.List[str], tg.Dict[str, tg.List]]) -> tg.List:
         for key_type, key_list in entity_key.items():
             if key_type in ("abbreviation", "regular_expression"):
                 for key in key_list:
-                    if re.search(key, string, re.UNICODE):
+                    match = re.search(key, string, re.UNICODE)
+                    if match:
                         is_match = True
                         break
             elif type in ("full_name",):
                 for key in key_list:
-                    if re.search(key, string, re.UNICODE + re.IGNORECASE):
+                    match = re.search(key, string, re.UNICODE + re.IGNORECASE)
+                    if match:
                         is_match = True
                         break
         if is_match:
-            result[entity] = True
+            result[entity] = match.group()
 
-    return id_, result # tg.Dict[str, bool]
+    return id_, result # tg.Dict[str, str]
     
 DEBUG = True
 
