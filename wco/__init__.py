@@ -23,9 +23,10 @@ def word_count(args: tg.Tuple[tg.List[str], tg.Dict[str, tg.List]]) -> tg.List:
 
     id_, string = row
     
-    result = [id_, defaultdict()]
-    is_match = False
+    result = defaultdict()
+    
     for entity, entity_key in raw_key.items():
+        is_match = False
         for key_type, key_list in entity_key.items():
             if key_type in ("abbreviation", "regular_expression"):
                 for key in key_list:
@@ -38,9 +39,9 @@ def word_count(args: tg.Tuple[tg.List[str], tg.Dict[str, tg.List]]) -> tg.List:
                         is_match = True
                         break
         if is_match:
-            result[1][entity] = True
+            result[entity] = True
 
-    return result
+    return id_, result # tg.Dict[str, bool]
     
 DEBUG = True
 
