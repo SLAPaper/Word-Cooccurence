@@ -9,37 +9,36 @@ from multiprocessing import Pool
 import csv
 import pdb
 import re
+from collections import defaultdict
 
 def word_count(args: tg.Tuple[tg.List[str], tg.Dict[str, tg.List]]) -> tg.List:
     """function that count the number of defined keys in given text
     using tuple to store args due to Pool's map method only support one parameter
     """
     if DEBUG:
-        print(args)
+        #print(args)
         pass
     
     row, raw_key = args
 
-    result = []
     id_, string = row
-    for entity, entity_key in raw_key.items():
-        is_match = False
-        for key_type, key_list in entity_key.items():
-            if is_match:
-                break
     
+    result = [id_, defaultdict()]
+    is_match = False
+    for entity, entity_key in raw_key.items():
+        for key_type, key_list in entity_key.items():
             if key_type in ("abbreviation", "regular_expression"):
                 for key in key_list:
-                    if re.search(key, string):
+                    if re.search(key, string, re.UNICODE):
                         is_match = True
                         break
             elif type in ("full_name",):
                 for key in key_list:
-                    if re.search(key, string, re.IGNORECASE):
+                    if re.search(key, string, re.UNICODE + re.IGNORECASE):
                         is_match = True
                         break
-
-        result.append((id_, entity, is_match))
+        if is_match:
+            result[1][entity] = True
 
     return result
     
@@ -63,4 +62,4 @@ if __name__ == "__main__":
         tsv_reader = csv.reader(tsvin, delimiter='\t')
         with Pool(8) as p:
             result = p.imap_unordered(word_count, ((row, keys) for row in tsv_reader), 100)
-            print([item for item in result])
+            print([item for item in result if len(item[1]) > 1])
