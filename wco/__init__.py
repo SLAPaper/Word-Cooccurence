@@ -34,7 +34,7 @@ def word_count(args: tg.Tuple[tg.List[str], tg.Dict[str, tg.List]]) -> tg.Tuple[
                     if match:
                         is_match = True
                         break
-            elif type in ("full_name",):
+            elif key_type in ("full_name",):
                 for key in key_list:
                     match = re.search(key, string, re.UNICODE + re.IGNORECASE)
                     if match:
