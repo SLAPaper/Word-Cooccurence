@@ -12,6 +12,8 @@ a tab seperated file(TSV):
 
 `ID \t sentence`
 
+**NOTICE:** all spaces is ignore
+
 ### Keyword(entity) input
 
 The keyword input can should be a json file with objects(dictionaries).
@@ -45,10 +47,14 @@ The keyword input can should be a json file with objects(dictionaries).
 
 a tab seperated file(TSV):
 
+**NOTICE:** all spaces is ignore
+
 `ID \t keyword \t key_form`
 
 ### ID-Sentence-Entities Output
 
 a tab seperated file(TSV):
+
+**NOTICE:** all spaces is ignore
 
 `ID \t sentence \t keyword1, keyword2, keyword3`
